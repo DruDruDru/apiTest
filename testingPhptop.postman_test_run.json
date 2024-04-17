@@ -1,0 +1,530 @@
+{
+	"id": "55d48acd-e701-42a1-af9b-1ec12fa62f5a",
+	"name": "testingPhptop",
+	"timestamp": "2024-04-17T13:38:30.932Z",
+	"collection_id": "32635004-9b382853-b7e2-4295-8ad6-760883eec8ee",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 33,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-04-17T13:38:27.250Z",
+	"totalFail": 10,
+	"results": [
+		{
+			"id": "e16cb1ea-81ad-4e5b-a781-2d0e6697468d",
+			"name": "registration",
+			"url": "http://phptop.ru/registration",
+			"time": 338,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"http code": false,
+				"http code in json": false,
+				"success in json": true,
+				"token exist": true,
+				"message successed": true
+			},
+			"testPassFailCounts": {
+				"http code": {
+					"pass": 0,
+					"fail": 1
+				},
+				"http code in json": {
+					"pass": 0,
+					"fail": 1
+				},
+				"success in json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"token exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"message successed": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				338
+			],
+			"allTests": [
+				{
+					"http code": false,
+					"http code in json": false,
+					"success in json": true,
+					"token exist": true,
+					"message successed": true
+				}
+			]
+		},
+		{
+			"id": "f2b055f1-228f-4ff0-9a73-8af750463386",
+			"name": "registrationNegative",
+			"url": "http://phptop.ru/registration",
+			"time": 185,
+			"responseCode": {
+				"code": 422,
+				"name": "Validation error"
+			},
+			"tests": {
+				"http code": true,
+				"http code in json": false,
+				"is successed": true,
+				"email validation": true,
+				"last_name validation": true,
+				"first_name validation": false,
+				"password validation": true
+			},
+			"testPassFailCounts": {
+				"http code": {
+					"pass": 1,
+					"fail": 0
+				},
+				"http code in json": {
+					"pass": 0,
+					"fail": 1
+				},
+				"is successed": {
+					"pass": 1,
+					"fail": 0
+				},
+				"email validation": {
+					"pass": 1,
+					"fail": 0
+				},
+				"last_name validation": {
+					"pass": 1,
+					"fail": 0
+				},
+				"first_name validation": {
+					"pass": 0,
+					"fail": 1
+				},
+				"password validation": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				185
+			],
+			"allTests": [
+				{
+					"http code": true,
+					"http code in json": false,
+					"is successed": true,
+					"email validation": true,
+					"last_name validation": true,
+					"first_name validation": false,
+					"password validation": true
+				}
+			]
+		},
+		{
+			"id": "39936a8c-edd1-47ab-b56e-37ba23533085",
+			"name": "login",
+			"url": "http://phptop.ru/authorization",
+			"time": 265,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"successed": true,
+				"code is 200 OK": false,
+				"request code is 200 OK": true,
+				"message is Success": true,
+				"token exist": true
+			},
+			"testPassFailCounts": {
+				"successed": {
+					"pass": 1,
+					"fail": 0
+				},
+				"code is 200 OK": {
+					"pass": 0,
+					"fail": 1
+				},
+				"request code is 200 OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"message is Success": {
+					"pass": 1,
+					"fail": 0
+				},
+				"token exist": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				265
+			],
+			"allTests": [
+				{
+					"successed": true,
+					"code is 200 OK": false,
+					"request code is 200 OK": true,
+					"message is Success": true,
+					"token exist": true
+				}
+			]
+		},
+		{
+			"id": "32164205-8fac-4648-85ec-58ab5570d78a",
+			"name": "loginNegative",
+			"url": "http://phptop.ru/authorization",
+			"time": 218,
+			"responseCode": {
+				"code": 401,
+				"name": "Login failed"
+			},
+			"tests": {
+				"request code is 401": true,
+				"code is 401": false,
+				"is not successed": true,
+				"error message": false
+			},
+			"testPassFailCounts": {
+				"request code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"code is 401": {
+					"pass": 0,
+					"fail": 1
+				},
+				"is not successed": {
+					"pass": 1,
+					"fail": 0
+				},
+				"error message": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				218
+			],
+			"allTests": [
+				{
+					"request code is 401": true,
+					"code is 401": false,
+					"is not successed": true,
+					"error message": false
+				}
+			]
+		},
+		{
+			"id": "cb94ae8a-b31a-414c-a5ef-6db356fcd79b",
+			"name": "uploadFiles",
+			"url": "http://phptop.ru/files",
+			"time": 298,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"http code": true,
+				"http code in json": false,
+				"is succecced": true,
+				"name exist": true,
+				"file_id exist": true,
+				"path to file": true
+			},
+			"testPassFailCounts": {
+				"http code": {
+					"pass": 1,
+					"fail": 0
+				},
+				"http code in json": {
+					"pass": 0,
+					"fail": 1
+				},
+				"is succecced": {
+					"pass": 1,
+					"fail": 0
+				},
+				"name exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"file_id exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"path to file": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				298
+			],
+			"allTests": [
+				{
+					"http code": true,
+					"http code in json": false,
+					"is succecced": true,
+					"name exist": true,
+					"file_id exist": true,
+					"path to file": true
+				}
+			]
+		},
+		{
+			"id": "bef55a9c-9978-4ffd-84a5-87980caacde1",
+			"name": "uploadFilesNegative",
+			"url": "http://phptop.ru/files",
+			"time": 251,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"is successed": true,
+				"message exist": true,
+				"name exist": true
+			},
+			"testPassFailCounts": {
+				"is successed": {
+					"pass": 1,
+					"fail": 0
+				},
+				"message exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"name exist": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				251
+			],
+			"allTests": [
+				{
+					"is successed": true,
+					"message exist": true,
+					"name exist": true
+				}
+			]
+		},
+		{
+			"id": "dc47aed9-e589-4374-bacc-b2b4eabd2f08",
+			"name": "userFilesList",
+			"url": "http://phptop.ru/files/disk",
+			"time": 206,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"http code": true,
+				"http code in json": false,
+				"name exist": true,
+				"file_id exist": true,
+				"path to file": true,
+				"fullname exist": true,
+				"email exist": true,
+				"type exist": true
+			},
+			"testPassFailCounts": {
+				"http code": {
+					"pass": 1,
+					"fail": 0
+				},
+				"http code in json": {
+					"pass": 0,
+					"fail": 1
+				},
+				"name exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"file_id exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"path to file": {
+					"pass": 1,
+					"fail": 0
+				},
+				"fullname exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"email exist": {
+					"pass": 1,
+					"fail": 0
+				},
+				"type exist": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				206
+			],
+			"allTests": [
+				{
+					"http code": true,
+					"http code in json": false,
+					"name exist": true,
+					"file_id exist": true,
+					"path to file": true,
+					"fullname exist": true,
+					"email exist": true,
+					"type exist": true
+				}
+			]
+		},
+		{
+			"id": "0d824673-8d3a-451d-b7c3-485e5424f321",
+			"name": "userFilesListNegative",
+			"url": "http://phptop.ru/files/disk",
+			"time": 146,
+			"responseCode": {
+				"code": 403,
+				"name": "Login failed"
+			},
+			"tests": {
+				"http status code": true,
+				"message exist": true
+			},
+			"testPassFailCounts": {
+				"http status code": {
+					"pass": 1,
+					"fail": 0
+				},
+				"message exist": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				146
+			],
+			"allTests": [
+				{
+					"http status code": true,
+					"message exist": true
+				}
+			]
+		},
+		{
+			"id": "4eb4c724-be08-447b-a775-9d27feb350de",
+			"name": "logout",
+			"url": "http://phptop.ru/logout",
+			"time": 206,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"request code is 204": false,
+				"is successed": true
+			},
+			"testPassFailCounts": {
+				"request code is 204": {
+					"pass": 0,
+					"fail": 1
+				},
+				"is successed": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				206
+			],
+			"allTests": [
+				{
+					"request code is 204": false,
+					"is successed": true
+				}
+			]
+		},
+		{
+			"id": "ed569ebe-dd73-4ffa-82f0-92a283e8399a",
+			"name": "logoutNegative",
+			"url": "http://phptop.ru/logout",
+			"time": 147,
+			"responseCode": {
+				"code": 403,
+				"name": "Login failed"
+			},
+			"tests": {
+				"request code is 403": true
+			},
+			"testPassFailCounts": {
+				"request code is 403": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				147
+			],
+			"allTests": [
+				{
+					"request code is 403": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2260,
+	"collection": {
+		"requests": [
+			{
+				"id": "e16cb1ea-81ad-4e5b-a781-2d0e6697468d",
+				"method": "POST"
+			},
+			{
+				"id": "f2b055f1-228f-4ff0-9a73-8af750463386",
+				"method": "POST"
+			},
+			{
+				"id": "39936a8c-edd1-47ab-b56e-37ba23533085",
+				"method": "POST"
+			},
+			{
+				"id": "32164205-8fac-4648-85ec-58ab5570d78a",
+				"method": "POST"
+			},
+			{
+				"id": "cb94ae8a-b31a-414c-a5ef-6db356fcd79b",
+				"method": "POST"
+			},
+			{
+				"id": "bef55a9c-9978-4ffd-84a5-87980caacde1",
+				"method": "POST"
+			},
+			{
+				"id": "dc47aed9-e589-4374-bacc-b2b4eabd2f08",
+				"method": "GET"
+			},
+			{
+				"id": "0d824673-8d3a-451d-b7c3-485e5424f321",
+				"method": "GET"
+			},
+			{
+				"id": "4eb4c724-be08-447b-a775-9d27feb350de",
+				"method": "GET"
+			},
+			{
+				"id": "ed569ebe-dd73-4ffa-82f0-92a283e8399a",
+				"method": "GET"
+			}
+		]
+	}
+}

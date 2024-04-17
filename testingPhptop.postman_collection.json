@@ -1,0 +1,733 @@
+{
+	"info": {
+		"_postman_id": "9b382853-b7e2-4295-8ad6-760883eec8ee",
+		"name": "testingPhptop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32635004"
+	},
+	"item": [
+		{
+			"name": "registration",
+			"item": [
+				{
+					"name": "registration",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"http code\", () => {\r",
+									"    pm.response.to.have.status(201)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"http code in json\", () => {\r",
+									"    pm.expect(responseJson.code).to.eql(201)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"success in json\", () => {\r",
+									"    pm.expect(responseJson.success).to.eql(true);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"token exist\", () => {\r",
+									"    pm.expect(responseJson.token).to.be.a(\"string\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"message successed\", () => {\r",
+									"    pm.expect(responseJson.message).to.eql(\"Success\");\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"first_name\": \"Govard\",\r\n    \"last_name\": \"Lavcraft\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://{{url}}/registration",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"registration"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registrationNegative",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"http code\", () => {\r",
+									"    pm.response.to.have.status(422)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"http code in json\", () => {\r",
+									"    pm.expect(responseJson.code).to.eql(422)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"is successed\", () => {\r",
+									"    pm.expect(responseJson.success).to.eql(false);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"email validation\", () => {\r",
+									"    pm.expect(responseJson.message.email).to.be.an('array')\r",
+									"})\r",
+									"\r",
+									"pm.test(\"last_name validation\", () => {\r",
+									"    pm.expect(responseJson.message.last_name).to.be.an('array')\r",
+									"})\r",
+									"\r",
+									"pm.test(\"first_name validation\", () => {\r",
+									"    pm.expect(responseJson.message.first_name).to.be.an('array')\r",
+									"})\r",
+									"\r",
+									"pm.test(\"password validation\", () => {\r",
+									"    pm.expect(responseJson.message.password).to.be.an('array')\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"@email@ru\",\r\n    \"password\": \"w\",\r\n    \"first_name\": \"F\",\r\n    \"last_name\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url}}/registration",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"registration"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();",
+									"",
+									"pm.test(\"successed\", () => {",
+									"    pm.expect(responseJson.success).to.eql(true);",
+									"})",
+									"",
+									"pm.test(\"code is 200 OK\", () => {",
+									"    pm.expect(responseJson.code).to.eql(200);",
+									"})",
+									"",
+									"pm.test(\"request code is 200 OK\", () => {",
+									"    pm.response.to.have.status(200)",
+									"})",
+									"",
+									"pm.test(\"message is Success\", () => {",
+									"    pm.expect(responseJson.message).to.eql(\"Success\");",
+									"})",
+									"",
+									"pm.test(\"token exist\", () => {",
+									"    pm.expect(responseJson.token).to.be.a(\"string\");",
+									"})",
+									"",
+									"postman.setGlobalVariable(\"token\", responseJson.token);",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url}}/{{login}}",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{login}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginNegative",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json()",
+									"",
+									"pm.test(\"request code is 401\", () => {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									"",
+									"pm.test(\"code is 401\", () => {",
+									"    pm.expect(responseJson.code).to.eql(401);",
+									"});",
+									"",
+									"pm.test(\"is not successed\", () => {",
+									"    pm.expect(responseJson.success).to.eql(false);",
+									"});",
+									"",
+									"pm.test(\"error message\", () => {",
+									"    pm.expect(responseJson.message).to.eql(\"Authorization failed\");",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"non_exist_person@nn.ru\",\n    \"password\": \"Qa32\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url}}/{{login}}",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{login}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "logout",
+			"item": [
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"request code is 204\", () => {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"pm.test(\"is successed\", () => {",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.success).to.eql(true);",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url}}/{{logout}}",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{logout}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logoutNegative",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"request code is 403\", () => {",
+									"    pm.response.to.have.status(403);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{url}}/{{logout}}",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{logout}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "userFilesList",
+			"item": [
+				{
+					"name": "userFilesList",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"http code\", () => {\r",
+									"    pm.response.to.have.status(200)\r",
+									"});\r",
+									"\r",
+									"for (file of responseJson) {\r",
+									"\r",
+									"    pm.test(\"http code in json\", () => {\r",
+									"        pm.expect(file.code).to.eql(200)\r",
+									"    })\r",
+									"\r",
+									"    pm.test(\"name exist\", () => {\r",
+									"        pm.expect(file.name).to.be.a(\"string\")\r",
+									"    })\r",
+									"\r",
+									"    pm.test(\"file_id exist\", () => {\r",
+									"        pm.expect(file.file_id).to.be.a('string')\r",
+									"    })\r",
+									"\r",
+									"    pm.test(\"path to file\", () => {\r",
+									"        pm.expect(file.url).to.be.a(\"string\")\r",
+									"    })\r",
+									"\r",
+									"    for (user of file.accesses) {\r",
+									"        pm.test(\"fullname exist\", () => {\r",
+									"            pm.expect(user.fullname).to.be.a(\"string\")\r",
+									"        })\r",
+									"\r",
+									"        pm.test(\"email exist\", () => {\r",
+									"            pm.expect(user.email).to.be.a('string')\r",
+									"        })\r",
+									"\r",
+									"        pm.test(\"type exist\", () => {\r",
+									"            pm.expect(user.type).to.be.a(\"string\")\r",
+									"        })\r",
+									"    }\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://{{url}}/{{files_list}}",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{files_list}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "userFilesListNegative",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"http status code\", () => {\r",
+									"    pm.response.to.have.status(403)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"message exist\", () => {\r",
+									"    pm.expect(pm.response.json().message).to.eql(\"Login failed\")\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{url}}/{{files_list}}",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{files_list}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "uploadFiles",
+			"item": [
+				{
+					"name": "uploadFiles",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json()[0];\r",
+									"\r",
+									"pm.test(\"http code\", () => {\r",
+									"    pm.response.to.have.status(200)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"http code in json\", () => {\r",
+									"    pm.expect(responseJson.code).to.eql(200)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"is succecced\", () => {\r",
+									"    pm.expect(responseJson.success).to.eql(true)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"name exist\", () => {\r",
+									"    pm.expect(responseJson.name).to.be.a(\"string\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"file_id exist\", () => {\r",
+									"    pm.expect(responseJson.file_id).to.be.a('string')\r",
+									"})\r",
+									"\r",
+									"pm.test(\"path to file\", () => {\r",
+									"    pm.expect(responseJson.url).to.be.a(\"string\")\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files[0]",
+									"type": "file",
+									"src": "33f18540c5cf458bc76e9513dc61fc6c.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{url}}/{{upload_files}}",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{upload_files}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uploadFilesNegative",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json()[0];\r",
+									"\r",
+									"pm.test(\"is successed\", () => {\r",
+									"    pm.expect(responseJson.success).to.eql(false);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"message exist\", () => {\r",
+									"    pm.expect(responseJson.message).to.be.a(\"string\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"name exist\", () => {\r",
+									"    pm.expect(responseJson.name).to.be.a('string');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files[0]",
+									"type": "file",
+									"src": "regularFile.hack"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{url}}/{{upload_files}}",
+							"protocol": "http",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{upload_files}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "phptop.ru",
+			"type": "string"
+		},
+		{
+			"key": "login",
+			"value": "authorization",
+			"type": "string"
+		},
+		{
+			"key": "signup",
+			"value": "registration",
+			"type": "string"
+		},
+		{
+			"key": "logout",
+			"value": "logout",
+			"type": "string"
+		},
+		{
+			"key": "upload_files",
+			"value": "files",
+			"type": "string"
+		},
+		{
+			"key": "email",
+			"value": "yuriy@fake.io",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "QWEasd123",
+			"type": "string"
+		},
+		{
+			"key": "files_list",
+			"value": "files/disk",
+			"type": "string"
+		}
+	]
+}
